@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Discount Page</title>
+</head>
+
+<body>
+    <h2>Rushidhar Reddy Sheelam computes discounts</h2>
+    <form>
+        <input type="number" id="inputValue1" name="inputValue1" value=20>
+        <label for="inputValue1">Enter base amount</label></br>
+        <input type="number" id="inputValue2" name="inputValue2" value=10>
+        <label for="inputValue2">Enter the discount percentage</label></br>
+        <input type="button" onclick="discount()" value="Apply discount">
+    </form>
+    <p id="result">This text will be replaced by discount amount</p>
+    <script>
+        function discount() {
+            let value1 = document.getElementById("inputValue1").value
+            let value2 = document.getElementById("inputValue2").value
+            let result = ' '
+            let i = 1;
+            while (i < 6) {
+                let finalValue = value1 - (value1 * (value2 / 100))
+                finalValue *= i
+                result += ' ' + finalValue
+                i++
+            }
+            document.getElementById("result").innerHTML = result
+        }
+        function chooseOp() {
+            let input1 = document.getElementById("inputValue1").value
+            let input2 = document.getElementById("inputValue2").value
+            let multiply = document.getElementById("multiplyValue").checked
+            let division = document.getElementById("divisionValue").checked
+            let exponent = document.getElementById("exponentValue").checked
+            let result = ''
+
+            if (multiply) {
+                result = input1 * input2
+            } else if (division) {
+                result = input1 / input2
+            }
+            else if (exponent) {
+                result = input1 ** input2
+            }
+            document.getElementById("operation").innerHTML = result
+
+        }
+    </script>
+
+    <form>
+        <input type="radio" onclick="chooseOp()" id="multiplyValue" name="multiplyValue" value="times">
+        <label for="multiplyValue">*</label></br>
+
+        <input type="radio" onclick="chooseOp()" id="divisionValue" name="divisionValue" value="divide">
+        <label for="divisionValue">/</label></br>
+
+        <input type="radio" onclick="chooseOp()" id="exponentValue" name="exponentValue" value="exponent">
+        <label for="exponentValue">**</label></br>
+    </form>
+    <p id="operation">This result will be changed as per operation</p>
+
+</body>
+</html>
