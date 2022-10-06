@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html>  
 <head>
     <title>Vacation Page</title>
 </head>
@@ -17,6 +17,14 @@
     </form>
 <p id="result">This text will be replaced </p>
 
+<form>
+    <input type="text" id="cityName" value=city>
+    <label for="cityName">Enter a city</label></br>
+    <input type="text" id="priceValue"> 
+    <label for="priceValue">Enter price</label></br>
+    <input type="button" onclick="updateVacation()" value="Update the vacation">
+</form>
+
 <script> 
 let my_vacation = {}
 function selectVacation(){
@@ -27,6 +35,15 @@ function selectVacation(){
     my_vacation = {air:airValue,domestic:domesticValue,resort:resortValue}
 
     document.getElementById("result").innerHTML = JSON.stringify(my_vacation)
+
+}
+
+function updateVacation(){
+    let x= document.getElementById("cityName").value
+    let y=document.getElementById("priceValue").value
+    my_vacation[x]= y
+    document.getElementById("result").innerHTML = JSON.stringify(my_vacation)
+
 
 }
 </script>
